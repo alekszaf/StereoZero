@@ -12,6 +12,8 @@ from time import sleep
 
 channel = 4
 
+camera = PiCamera()
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 

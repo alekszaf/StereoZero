@@ -10,7 +10,7 @@ channel = 4
 #button = Button(17)
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(channel, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+GPIO.setup(channel, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 #GPIO.setup(button, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 #GPIO.add_event_detect(button, GPIO.RISING, bouncetime=300)
