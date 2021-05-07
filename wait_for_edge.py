@@ -6,6 +6,9 @@ BUGS:
     *RESOLVED by adding a pull-down in the GPIO setup*
     
     - adding camera capture takes additional 5 seconds
+    *UNRESOLVED
+    
+    - some images contain no data
     *UNRESOLVED'''
 
 import RPi.GPIO as GPIO
