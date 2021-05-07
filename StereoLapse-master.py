@@ -21,8 +21,8 @@ i = 0
 while True:
     if GPIO.event_detected(channel):
         tstamp = datetime.now()
-        print(f'Rising edge @{datetime.now()}')
         camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
+        print(f'Rising edge @{datetime.now()}')
         i += 1
         if i == 10:
             break
