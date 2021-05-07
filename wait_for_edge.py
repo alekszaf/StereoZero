@@ -16,15 +16,20 @@ from datetime import datetime
 from picamera import PiCamera
 from time import sleep
 
+# Number of the GPIO receiving signal from the timer
 channel = 4
 
+#Initialize the camera
 camera = PiCamera()
+
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
+# Look for rising signal
 GPIO.add_event_detect(channel, GPIO.RISING)
 
+# MAIN LOOP - capture an image every time rising edge is detected
 while True:
     if GPIO.event_detected(channel):
         print(f'Rising edge @{datetime.now()}')
