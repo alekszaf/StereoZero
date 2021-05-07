@@ -1,12 +1,13 @@
 import RPi.GPIO as GPIO
 from datetime import datetime
 from picamera import PiCamera
-from gpiozero import Button
+#from gpiozero import Button
 from time import sleep
 
 camera = PiCamera()
 
 channel = 4
+
 #button = Button(17)
 
 GPIO.setmode(GPIO.BCM)
@@ -21,7 +22,7 @@ GPIO.add_event_detect(channel, GPIO.RISING)
 while True:
     if GPIO.event_detected(channel):
         tstamp = datetime.now()
-        camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
+        #camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
         print(f'Rising edge @{datetime.now()}')
 #        i += 1
 #        if i == 10:
