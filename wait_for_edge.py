@@ -1,8 +1,9 @@
 '''This code works for detecting rising edge
-    of the signal transmitted by the timer.
+of the signal transmitted by the timer.
     
-    BUGS:
-        - two outputs within one second'''
+BUGS:
+    - two outputs within one second
+    *RESOLVED by adding a pull-down in the GPIO setup* '''
 
 import RPi.GPIO as GPIO
 from datetime import datetime
