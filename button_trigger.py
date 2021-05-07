@@ -32,6 +32,7 @@ def captureTimelapse():
 def capture():
      tstamp = datetime.now()
      camera.capture('/home/pi/Timelapse/%s.jpg' %tstamp)
+     print(tstamp)
     
 try:
     #button.when_pressed = captureTimelapse
