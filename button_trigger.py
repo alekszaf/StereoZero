@@ -26,15 +26,16 @@ def captureTimelapse():
         if GPIO.event_detected(channel):
             tstamp = datetime.now()
             print(f'Rising edge @{datetime.now()}')
-            camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
+            #camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
     timelapse_on = not timelapse_on
     
-# def capture():
-#     tstamp = datetime.now()
-#     camera.capture('/home/pi/Timelapse/%s.jpg' %tstamp)
+def capture():
+     tstamp = datetime.now()
+     camera.capture('/home/pi/Timelapse/%s.jpg' %tstamp)
     
 try:
-    button.when_pressed = captureTimelapse
+    #button.when_pressed = captureTimelapse
+    button.when_pressed = capture
     pause()
 
 finally:
