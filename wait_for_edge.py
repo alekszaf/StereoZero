@@ -1,5 +1,6 @@
-'''This code works for detecting rising edge
-of the signal transmitted by the timer.
+'''This code is used for testing of the timer trigger mechanism.
+It works for detecting rising edge of the signal transmitted by the timer.
+The signal is then triggering the camera capture (with 5 second delay - BUG).
     
 BUGS:
     - two outputs within one second
@@ -9,7 +10,7 @@ BUGS:
     *UNRESOLVED
     
     - some images contain no data
-    *UNRESOLVED'''
+    *UNRESOLVED - possibly due to the script interrupt during capture'''
 
 # Load the libraries
 import RPi.GPIO as GPIO
