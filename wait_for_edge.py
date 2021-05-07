@@ -3,7 +3,10 @@ of the signal transmitted by the timer.
     
 BUGS:
     - two outputs within one second
-    *RESOLVED by adding a pull-down in the GPIO setup* '''
+    *RESOLVED by adding a pull-down in the GPIO setup*
+    
+    - adding camera capture takes additional 5 seconds
+    *UNRESOLVED'''
 
 import RPi.GPIO as GPIO
 from datetime import datetime
@@ -22,3 +25,5 @@ GPIO.add_event_detect(channel, GPIO.RISING)
 while True:
     if GPIO.event_detected(channel):
         print(f'Rising edge @{datetime.now()}')
+        tstamp = datetime.now()
+        camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
