@@ -87,11 +87,18 @@ print(translationR)
 
 # Undistortion (single camera)
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
-    dstL = cv2.undistort(imgLeft, cameraMatrixL, distL, None, newCameraMatrixL)
-    dstR = cv2.undistort(imgRight, cameraMatrixR, distR, None, newCameraMatrixR)
+    imgL = cv2.imread(imgLeft)
+    imgR = cv2.imread(imgRight)
+    dstL = cv2.undistort(imgL, cameraMatrixL, distL, None, newCameraMatrixL)
+    dstR = cv2.undistort(imgR, cameraMatrixR, distR, None, newCameraMatrixR)
     xL, yL, wL, hL = roi_L    
     xR, yR, wR, hR = roi_R
     dstL = dstL[yL:yL+hL, xL:xL+wL]
     dstR = dstR[yR:yR+hR, xR:xR+wR]
+    cv2.imshow('undistorted left', dstL)
+    cv2.imshow('distorted left', imgL)
+    cv2.imshow('undistorted right', dstR)
+    cv2.imshow('distorted right', imgR)
+    cv2.waitKey(1000)
 
 # Stereo calibration
