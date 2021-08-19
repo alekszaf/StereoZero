@@ -102,3 +102,10 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     cv2.waitKey(1000)
 
 # Stereo calibration
+flags = 0
+flags |= cv2.CALIB_FIX_INTRINSIC
+
+criteria_stereo = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+
+# essentialMatrix, fundamentalMatrix - how do we relate one camera to the other
+retStereo, newCameraMatrixL, distL, newCameraMatrixR, distR, rot, trans, essentialMatrix, fundamentalMatrix = cv2.stereoCalibrate(objpoints, imgpointsL, imgpointsR, newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], criteria_stereo, flags)
