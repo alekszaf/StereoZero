@@ -62,7 +62,25 @@ retL, cameraMatrixL, distL, rotationL, translationL = cv2.calibrateCamera(objpoi
 heightL, widthL, channelsL = imgL.shape
 newCameraMatrixL, roi_L = cv2.getOptimalNewCameraMatrix(cameraMatrixL, distL, (widthL, heightL), 1, (widthL, heightL))
 
+print("Camera matrix L: \n0")
+print(cameraMatrixL)
+print("Distortion L: \n")
+print(distL)
+print("Rotation vector L: \n")
+print(rotationL)
+print("Translation vector L: \n")
+print(translationL)
+
 # Right camera
 retR, cameraMatrixR, distR, rotationR, translationR = cv2.calibrateCamera(objpoints, imgpointsL, frameSize, None, None)
 heightR, widthR, channelsR = imgR.shape
 newCameraMatrixL, roi_L = cv2.getOptimalNewCameraMatrix(cameraMatrixR, distR, (widthR, heightR), 1, (widthR, heightR))
+
+print("Camera matrix R: \n0")
+print(cameraMatrixL)
+print("Distortion R: \n")
+print(distR)
+print("Rotation vector R: \n")
+print(rotationR)
+print("Translation vector R: \n")
+print(translationR)
