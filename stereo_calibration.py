@@ -62,7 +62,7 @@ retL, cameraMatrixL, distL, rotationL, translationL = cv2.calibrateCamera(objpoi
 heightL, widthL, channelsL = imgL.shape
 newCameraMatrixL, roi_L = cv2.getOptimalNewCameraMatrix(cameraMatrixL, distL, (widthL, heightL), 1, (widthL, heightL))
 
-print("Camera matrix L: \n0")
+print("Camera matrix L: \n")
 print(cameraMatrixL)
 print("Distortion L: \n")
 print(distL)
@@ -74,7 +74,7 @@ print(translationL)
 # Right camera
 retR, cameraMatrixR, distR, rotationR, translationR = cv2.calibrateCamera(objpoints, imgpointsL, frameSize, None, None)
 heightR, widthR, channelsR = imgR.shape
-newCameraMatrixL, roi_L = cv2.getOptimalNewCameraMatrix(cameraMatrixR, distR, (widthR, heightR), 1, (widthR, heightR))
+newCameraMatrixR, roi_R = cv2.getOptimalNewCameraMatrix(cameraMatrixR, distR, (widthR, heightR), 1, (widthR, heightR))
 
 print("Camera matrix R: \n0")
 print(cameraMatrixL)
@@ -84,3 +84,14 @@ print("Rotation vector R: \n")
 print(rotationR)
 print("Translation vector R: \n")
 print(translationR)
+
+# Undistortion (single camera)
+for imgLeft, imgRight in zip(imagesLeft, imagesRight):
+    dstL = cv2.undistort(imgLeft, cameraMatrixL, distL, None, newCameraMatrixL)
+    dstR = cv2.undistort(imgRight, cameraMatrixR, distR, None, newCameraMatrixR)
+    xL, yL, wL, hL = roi_L    
+    xR, yR, wR, hR = roi_R
+    dstL = dstL[yL:yL+hL, xL:xL+wL]
+    dstR = dstR[yR:yR+hR, xR:xR+wR]
+
+# Stereo calibration
