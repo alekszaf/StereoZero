@@ -101,7 +101,7 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     cv2.imshow('distorted right', imgR)
     cv2.waitKey(1000)
 
-# Stereo calibration
+### Stereo calibration ###
 flags = 0
 flags |= cv2.CALIB_FIX_INTRINSIC
 
@@ -109,3 +109,20 @@ criteria_stereo = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001
 
 # essentialMatrix, fundamentalMatrix - how do we relate one camera to the other
 retStereo, newCameraMatrixL, distL, newCameraMatrixR, distR, rot, trans, essentialMatrix, fundamentalMatrix = cv2.stereoCalibrate(objpoints, imgpointsL, imgpointsR, newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], criteria_stereo, flags)
+
+### Stereo rectification ###
+
+rectifyScale = 1
+rectL, rectR, projMatrixL, projMatrixR, Q, roi_L, roi_R = cv2.stereoRectify(newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], rot, trans, rectifyScale, (0,0))
+
+stereoMapL = cv2.initUndistortRectifyMap(newCameraMatrixL, distL, rectL, projMatrixL, grayL.shape[::-1], cv2.CV_16SC2)
+stereoMapR = cv2.initUndistortRectifyMap(newCameraMatrixR, distR, rectR, projMatrixR, grayR.shape[::-1], cv2.CV_16SC2)
+
+cv_file = cv2.FileStorage('stereoMap.xml', cv2.FILE_STORAGE_WRITE)
+
+cv_file.write('stereoMapL_x', stereoMapL[0])
+cv_file.write('stereoMapL_y', stereoMapL[1])
+cv_file.write('stereoMapR_x', stereoMapR[0])
+cv_file.write('stereoMapR_y', stereoMapR[1])
+
+cv_file.release()
