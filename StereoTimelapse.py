@@ -34,12 +34,14 @@ while True:
         image = rawCapture.array
 
         # Rectify and undistort
-        image = cv2.remap(image, stereoMapL_x, stereoMapL_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT)
-        #image = cv2.remap(image, stereoMapR_x, stereoMapR_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT)
+        image = cv2.remap(image, stereoMapL_x, stereoMapL_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT, 0)
+        #image = cv2.remap(image, stereoMapR_x, stereoMapR_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT, 0)
         
         tstamp = datetime.now()
         print(f'Rising edge detected @{datetime.now()}')
-        camera.capture('/home/pi/Timelapse/green_calib%s.jpg' %tstamp)
+        
+        cv2.imwrite('/home/pi/Timelapse/green_calib%s.png' %tstamp, image)
+        
         i += 1
         if i == 25:
             break
