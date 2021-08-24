@@ -85,7 +85,7 @@ print(rotationR)
 print("Translation vector R: \n")
 print(translationR)
 
-# Undistortion (single camera)
+## Undistortion (single camera)
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     imgL = cv2.imread(imgLeft)
     imgR = cv2.imread(imgRight)
@@ -111,6 +111,10 @@ criteria_stereo = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001
 retStereo, newCameraMatrixL, distL, newCameraMatrixR, distR, rot, trans, essentialMatrix, fundamentalMatrix = cv2.stereoCalibrate(objpoints, imgpointsL, imgpointsR, newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], criteria_stereo, flags)
 
 ### Stereo rectification ###
+"""Compute the rotation matrices for each camera
+to make both camera image planes the same plane (virtually).
+This makes all the epipolar lines parallel and thus simplifies
+the dense stereo corespondence problem"""
 
 rectifyScale = 1
 rectL, rectR, projMatrixL, projMatrixR, Q, roi_L, roi_R = cv2.stereoRectify(newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], rot, trans, rectifyScale, (0,0))
