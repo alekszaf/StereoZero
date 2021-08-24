@@ -101,6 +101,14 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     cv2.imshow('distorted right', imgR)
     cv2.waitKey(1000)
 
+## Reprojection error
+mean_error = 0
+for i in range(len(objpoints)):
+    imgpoints2, _ = cv2.projectPoints(objpoints[i], rotationL[i], translationL[i], cameraMatrixL, distL)
+    error = cv2.norm(imgpointsL[i], imgpoints2, cv2.NORM_L2)/len(imgpoints2)
+    mean_error += error
+print('total error: {}'.format(mean_error/len(objpoints)))
+
 ### Stereo calibration ###
 flags = 0
 flags |= cv2.CALIB_FIX_INTRINSIC
