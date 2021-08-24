@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import glob
 
-
+### DETECT CHESSBOARD PATTERN ###
 
 # Calibration image parameters
 chessboardSize = (9, 6)
@@ -30,7 +30,7 @@ imagesRight = glob.glob('C:/Temp/Timelapse/Right_cam_calibration/*.jpg')
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     imgL = cv2.imread(imgLeft)
     imgR = cv2.imread(imgRight)
-    grayL = cv2.cvtColor(imgL, cv2.COLOR_BGR2GRAY)
+    grayL = cv2.cvtColor(imgL, cv2.COLOR_BGR2GRAY) # Convert to grayscale
     grayR = cv2.cvtColor(imgR, cv2.COLOR_BGR2GRAY)
 
     # Find the chess board corners
