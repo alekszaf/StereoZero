@@ -130,6 +130,8 @@ rectL, rectR, projMatrixL, projMatrixR, Q, roi_L, roi_R = cv2.stereoRectify(newC
 stereoMapL = cv2.initUndistortRectifyMap(newCameraMatrixL, distL, rectL, projMatrixL, grayL.shape[::-1], cv2.CV_16SC2)
 stereoMapR = cv2.initUndistortRectifyMap(newCameraMatrixR, distR, rectR, projMatrixR, grayR.shape[::-1], cv2.CV_16SC2)
 
+# Save the parameters
+
 cv_file = cv2.FileStorage('stereoMap.xml', cv2.FILE_STORAGE_WRITE)
 
 cv_file.write('stereoMapL_x', stereoMapL[0])
