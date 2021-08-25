@@ -55,7 +55,7 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
 
 cv2.destroyAllWindows()  
 
-### CALIBRATION ###
+############## SINGLE-CAMERA CALIBRATION ##############
 
 # Left camera
 retL, cameraMatrixL, distL, rotationL, translationL = cv2.calibrateCamera(objpoints, imgpointsL, frameSize, None, None)
@@ -109,7 +109,7 @@ for i in range(len(objpoints)):
     mean_error += error
 print('total error: {}'.format(mean_error/len(objpoints)))
 
-### Stereo calibration ###
+############## STEREO CALIBRATION ##############
 flags = 0
 flags |= cv2.CALIB_FIX_INTRINSIC
 
@@ -118,7 +118,7 @@ criteria_stereo = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001
 # essentialMatrix, fundamentalMatrix - how do we relate one camera to the other
 retStereo, newCameraMatrixL, distL, newCameraMatrixR, distR, rot, trans, essentialMatrix, fundamentalMatrix = cv2.stereoCalibrate(objpoints, imgpointsL, imgpointsR, newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], criteria_stereo, flags)
 
-### Stereo rectification ###
+############## STEREO RECTIFICATION ################
 """Compute the rotation matrices for each camera
 to make both camera image planes the same plane (virtually).
 This makes all the epipolar lines parallel and thus simplifies
