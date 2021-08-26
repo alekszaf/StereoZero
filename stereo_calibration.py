@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import glob
 
-### DETECT CHESSBOARD PATTERN ###
+############## DETECT CHESSBOARD PATTERN ##############
 
 # Calibration image parameters
 chessboardSize = (9, 6)
@@ -101,17 +101,20 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     cv2.imshow('distorted right', imgR)
     cv2.waitKey(1000)
 
-## Reprojection error
+# Reprojection error
+
 mean_error = 0
+
 for i in range(len(objpoints)):
     imgpoints2, _ = cv2.projectPoints(objpoints[i], rotationL[i], translationL[i], cameraMatrixL, distL)
     error = cv2.norm(imgpointsL[i], imgpoints2, cv2.NORM_L2)/len(imgpoints2)
     mean_error += error
+
 print('total error: {}'.format(mean_error/len(objpoints)))
 
 ############## STEREO CALIBRATION ##############
 flags = 0
-flags |= cv2.CALIB_FIX_INTRINSIC
+flags |= cv2.CALIB_FIX_INTRINSIC # keep the intrinsic parameters fixed
 
 criteria_stereo = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
