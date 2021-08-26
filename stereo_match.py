@@ -17,6 +17,9 @@ imgR = cv.imread('C://Temp//Timelapse//Right_Tests_25-08-2021//green_calib_23cm2
 # Rectify the images
 imgL = cv.remap(imgL, stereoMapL_x, stereoMapL_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
 imgR = cv.remap(imgR, stereoMapR_x, stereoMapR_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
+cv.imshow('Left camera - stereo rectified', imgL)
+cv.imshow('Right camera - stereo rectified', imgR)
+cv.waitKey(0)
 
 stereo = cv.StereoBM_create(numDisparities=16, blockSize=15)
 disparity = stereo.compute(imgL, imgR)
