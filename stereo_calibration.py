@@ -85,6 +85,7 @@ print(rotationR)
 print("Translation vector R: \n")
 print(translationR)
 
+
 ## Undistortion (single camera)
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     imgL = cv2.imread(imgLeft)
@@ -99,7 +100,7 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     cv2.imshow('distorted left', imgL)
     cv2.imshow('undistorted right', dstR)
     cv2.imshow('distorted right', imgR)
-    cv2.waitKey(1000)
+    cv2.waitKey(0)
 
 # Reprojection error
 
