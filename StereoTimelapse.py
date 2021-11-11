@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO # REDUNDANT LIBRARY - replace with gpiozero
 import numpy as np
 import cv2
 from datetime import datetime
@@ -18,7 +18,7 @@ stereoMapR_y = cv_file.getNode('stereoMapR_y').mat()
 camera = PiCamera()
 rawCapture = PiRGBArray(camera)
 
-# Set GPIO mode
+# Set GPIO mode (either GPIO number or sequence)
 GPIO.setmode(GPIO.BCM)
 
 # Set GPIO to receive timer signal
@@ -47,7 +47,7 @@ while True:
             break
 
 
-### Trigger with button
+### Trigger with button using GPIO library (REDUNDANT)
 
 button = 17
 
