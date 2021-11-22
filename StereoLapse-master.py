@@ -1,3 +1,5 @@
+'''This is the main script used to take timelapse imagery'''
+
 import RPi.GPIO as GPIO
 from datetime import datetime
 from picamera import PiCamera
