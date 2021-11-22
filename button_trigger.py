@@ -1,3 +1,5 @@
+'''This code is used for testing the button functionality'''
+
 from picamera import PiCamera
 import RPi.GPIO as GPIO
 from gpiozero import Button
