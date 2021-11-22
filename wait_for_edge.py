@@ -36,6 +36,6 @@ GPIO.add_event_detect(channel, GPIO.RISING)
 # MAIN LOOP - capture an image every time rising edge is detected
 while True:
     if GPIO.event_detected(channel):
-        tstamp = datetime.now()
+        tstamp = str(datetime.now())
         camera.capture('/home/pi/Timelapse/orange_test_%s.png' %tstamp)
         print(f'Rising edge @{datetime.now()}')
