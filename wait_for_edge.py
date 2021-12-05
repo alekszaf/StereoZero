@@ -19,7 +19,7 @@ from picamera import PiCamera
 from time import sleep
 
 # Number of the GPIO receiving signal from the timer
-channel = 4
+channel = 5
 
 # Initialize the camera
 camera = PiCamera()
