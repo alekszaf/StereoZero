@@ -6,7 +6,7 @@ from picamera import PiCamera
 from time import sleep
 
 #Initialize the camera
-
+#camera = PiCamera()
 
 #Set timer input GPIO
 channel = 4
@@ -32,6 +32,6 @@ while True:
         camera = PiCamera()
         tstamp = datetime.now()
         print(f'Rising edge @{datetime.now()}')
-        camera.capture('/home/pi/Timelapse/orange_10cm_%s.png' %tstamp)
+        camera.capture('/home/pi/Timelapse/left_80cm_%s.png' %tstamp)
         camera.close()
 
