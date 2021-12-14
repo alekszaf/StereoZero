@@ -27,6 +27,10 @@ imgpointsR = []
 imagesLeft = glob.glob('C:/Temp/Timelapse/Left_cam_calibration/*.jpg')
 imagesRight = glob.glob('C:/Temp/Timelapse/Right_cam_calibration/*.jpg')
 
+#imagesLeft = glob.glob('C:/Temp/Timelapse/Calib-LEFT/*.png')
+#imagesRight = glob.glob('C:/Temp/Timelapse/Calib-RIGHT/*.png')
+
+
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     imgL = cv2.imread(imgLeft)
     imgR = cv2.imread(imgRight)
