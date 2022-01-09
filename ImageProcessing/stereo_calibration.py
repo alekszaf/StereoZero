@@ -24,11 +24,8 @@ imgpointsL = []
 imgpointsR = []
 
 # Load the images
-imagesLeft = glob.glob('C:/Temp/Timelapse/Left_cam_calibration/*.jpg')
-imagesRight = glob.glob('C:/Temp/Timelapse/Right_cam_calibration/*.jpg')
-
-#imagesLeft = glob.glob('C:/Temp/Timelapse/Calib-LEFT/*.png')
-#imagesRight = glob.glob('C:/Temp/Timelapse/Calib-RIGHT/*.png')
+imagesLeft = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Left_cam_calibration/*.jpg')
+imagesRight = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Right_cam_calibration/*.jpg')
 
 
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
