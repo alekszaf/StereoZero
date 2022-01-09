@@ -143,5 +143,6 @@ cv_file.write('stereoMapL_x', stereoMapL[0])
 cv_file.write('stereoMapL_y', stereoMapL[1])
 cv_file.write('stereoMapR_x', stereoMapR[0])
 cv_file.write('stereoMapR_y', stereoMapR[1])
+cv_file.write('q', Q)
 
 cv_file.release()
