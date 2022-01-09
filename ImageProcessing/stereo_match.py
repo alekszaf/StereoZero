@@ -11,11 +11,11 @@ stereoMapR_x = cv_file.getNode('stereoMapR_x').mat()
 stereoMapR_y = cv_file.getNode('stereoMapR_y').mat()
 
 #Load the images
-imgL = cv.imread('C://Temp//Timelapse//NGIF-9-12-21//Left//cropped//0.png', 1)
-imgR = cv.imread('C://Temp//Timelapse//NGIF-9-12-21//Right//14h25min36s-26min57s//green_10m_2021-12-08 14-25-36.972421.jpg', 1)
+imgL = cv.imread('C:\\Users\\b7079552\\OneDrive - Newcastle University\\PhD\\Camera timelapses\\Zweibrucken_09-01-2022\\Left\\4m\\left_2022-01-09 15-24-05.838816.png', 1)
+imgR = cv.imread('C:\\Users\\b7079552\\OneDrive - Newcastle University\\PhD\\Camera timelapses\\Zweibrucken_09-01-2022\\Right\\4m\\right_2022-01-09 15-24-05.839931.png', 1)
 
-#plt.imshow(imgL)
-plt.imshow(imgR)
+cv.imshow(imgL)
+cv.imshow(imgR)
 
 #Load sample images
 #imgR = cv.imread('C://Temp//stereo_samples//Yeuna9x.png')
@@ -34,15 +34,12 @@ cv.waitKey(0)
 minDisparity = 0
 numDisparities=64
 
-stereo = cv.StereoBM_create(numDisparities=48, blockSize = 11)
-#stereo = cv.StereoBM_create(blockSize=4)
-#stereo = cv.StereoBM_create(16, 15)
+stereo = cv.StereoBM_create(numDisparities=64, blockSize = 11)
 disparity = stereo.compute(grayLeft, grayRight)
 
 #Scale down disparity values and normalize
 disparity = disparity.astype(np.float32)
 disparity = (disparity/16.0 - minDisparity)/numDisparities
-
 
 plt.imshow(disparity, 'gray')
 plt.show()
