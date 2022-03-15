@@ -22,9 +22,10 @@ while True:
         camera.awb_mode = 'off'
         camera.awb_gains = (1.1, 1.1)
         camera.iso = 200
-        camera.start_recording('/home/pi/Timelapse/video', format='mjpeg')
+        tstamp = datetime.now()
+        camera.start_recording('/home/pi/Timelapse/video_%s' %tstamp, format='mjpeg')
         print(f'Recording started @{datetime.now()}')
-        camera.wait_recording(30)
+        camera.wait_recording(60)
         print(f'Recording complete @{datetime.now()}')
         camera.stop_recording()
         camera.close()
