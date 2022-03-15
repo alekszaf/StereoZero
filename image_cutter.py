@@ -1,3 +1,5 @@
+'''The script can be used to crop a series of images in a folder to the desired size.'''
+
 from PIL import Image
 import glob
 
