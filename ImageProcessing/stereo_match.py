@@ -11,25 +11,48 @@ stereoMapR_x = cv_file.getNode('stereoMapR_x').mat()
 stereoMapR_y = cv_file.getNode('stereoMapR_y').mat()
 
 #Load the images
-#imgL = cv.imread('C://Temp//Timelapse//15-09-21//Second_depth_test-15-09-21o//orange_test_10cm2021-09-15 21-35-59.407296.jpg', 0)
-#imgR = cv.imread('C://Temp//Timelapse//15-09-21//Second_depth_test-15-09-21g//green_test_10cm2021-09-15 21-35-59.403614.jpg', 0)
-imgR = cv.imread('C://Temp//stereo_samples//Yeuna9x.png')
-imgL = cv.imread('C://Temp//stereo_samples//SuXT483.png')
+imgL = cv.imread('C:\\Users\\b7079552\\OneDrive - Newcastle University\\PhD\\Camera timelapses\\Zweibrucken_15-01-2022\\Left\\left_2022-01-15 15-20-32.888713.png', 1)
+imgR = cv.imread('C:\\Users\\b7079552\\OneDrive - Newcastle University\\PhD\\Camera timelapses\\Zweibrucken_15-01-2022\\Right\\right_2022-01-15 15-20-32.183367.png', 1)
 
-# Rectify the images
-#imgL = cv.remap(imgL, stereoMapL_x, stereoMapL_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
-#imgR = cv.remap(imgR, stereoMapR_x, stereoMapR_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
-cv.imshow('Left camera - stereo rectified', imgL)
-cv.imshow('Right camera - stereo rectified', imgR)
+cv.imshow('Left', imgL)
+cv.imshow('Right', imgR)
 cv.waitKey(0)
+
+#Load sample images
+#imgR = cv.imread('C://Temp//stereo_samples//Yeuna9x.png')
+#imgL = cv.imread('C://Temp//stereo_samples//SuXT483.png')
 
 grayLeft = cv.cvtColor(imgL, cv.COLOR_BGR2GRAY)
 grayRight = cv.cvtColor(imgR, cv.COLOR_BGR2GRAY)
 
-stereo = cv.StereoBM_create(numDisparities=16, blockSize = 5)
-#stereo = cv.StereoBM_create(blockSize=4)
-#stereo = cv.StereoBM_create(16, 15)
+# Rectify the images
+#grayLeft = cv.remap(grayLeft, stereoMapL_x, stereoMapL_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
+#grayRight = cv.remap(grayRight, stereoMapR_x, stereoMapR_y, cv.INTER_LINEAR, cv.BORDER_CONSTANT, 0)
+#cv.imshow('Left camera - stereo rectified', grayLeft)
+#cv.imshow('Right camera - stereo rectified', grayRight)
+#cv.waitKey(0)
+
+#Calculate the disparity map
+minDisp = 0
+numDisp = 16
+
+#StereoSGBM
+# stereo = cv.StereoSGBM_create(minDisparity = minDisp,
+#  numDisparities = numDisp,
+#  blockSize = 9,
+#  uniquenessRatio = 5,
+#  speckleWindowSize = 5,
+#  speckleRange = 5,
+#  disp12MaxDiff = 1)
+
+#StereoBM
+stereo = cv.StereoBM_create(numDisparities=numDisp, blockSize = 15)
+
 disparity = stereo.compute(grayLeft, grayRight)
+
+#Scale down disparity values and normalize
+#disparity = disparity.astype(np.float32)
+#disparity = (disparity/16.0 - minDisp)/numDisp
 
 plt.imshow(disparity, 'gray')
 plt.show()

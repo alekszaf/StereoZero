@@ -15,7 +15,7 @@ criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 objp = np.zeros((chessboardSize[0] * chessboardSize[1], 3), np.float32)
 objp[:, :2] = np.mgrid[0:chessboardSize[0], 0:chessboardSize[1]].T.reshape(-1, 2)
 
-objp = objp * 30
+objp = objp * 20
 print(objp)
 
 # Store object points and image points
@@ -24,8 +24,9 @@ imgpointsL = []
 imgpointsR = []
 
 # Load the images
-imagesLeft = glob.glob('C:/Temp/Timelapse/Left_cam_calibration/*.jpg')
-imagesRight = glob.glob('C:/Temp/Timelapse/Right_cam_calibration/*.jpg')
+imagesLeft = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Left_cam_calibration/*.jpg')
+imagesRight = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Right_cam_calibration/*.jpg')
+
 
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     imgL = cv2.imread(imgLeft)
@@ -142,5 +143,6 @@ cv_file.write('stereoMapL_x', stereoMapL[0])
 cv_file.write('stereoMapL_y', stereoMapL[1])
 cv_file.write('stereoMapR_x', stereoMapR[0])
 cv_file.write('stereoMapR_y', stereoMapR[1])
+cv_file.write('q', Q)
 
 cv_file.release()
