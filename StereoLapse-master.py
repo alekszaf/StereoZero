@@ -5,9 +5,6 @@ from datetime import datetime
 from picamera import PiCamera
 from time import sleep
 
-#Initialize the camera
-#camera = PiCamera()
-
 #Set timer input GPIO
 channel = 5
 
