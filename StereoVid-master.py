@@ -1,3 +1,5 @@
+'''This is the main script for video recording'''
+
 import RPi.GPIO as GPIO
 from datetime import datetime
 from picamera import PiCamera
