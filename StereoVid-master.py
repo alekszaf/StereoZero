@@ -5,6 +5,11 @@ from datetime import datetime
 from picamera import PiCamera
 from time import sleep
 
+# Set command line input for the video length
+ap = argparse.ArgumentParser()
+ap.add_argument("-t", "--time", required = True, help = "Length of the video recording") 
+args = vars(ap.parse_args())  # parse the arguments and store them in a dictionary
+
 #Set button GPIO
 button = 6
 
@@ -35,7 +40,7 @@ while True:
         print(f'Recording started @{datetime.now()}')
         
         #Record for a given period of time
-        camera.wait_recording(20)
+        camera.wait_recording(args["time"])
         print(f'Recording complete @{datetime.now()}')
         camera.stop_recording()
         
