@@ -23,6 +23,7 @@ while True:
         camera.awb_gains = (1.1, 1.1)
         camera.iso = 200
         tstamp = datetime.now()
+        camera.shutter_speed = 10000
         camera.framerate = 20
         camera.start_recording('/home/pi/Timelapse/video_%s' %tstamp, format='mjpeg')
         print(f'Recording started @{datetime.now()}')
