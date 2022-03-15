@@ -30,7 +30,7 @@ while True:
     if GPIO.event_detected(channel) and timelapse_on:
         camera = PiCamera()
         #camera.resolution = (2592, 1944)
-        camera.resolution = (720, 480)
+        camera.resolution = (640, 480)
         camera.awb_mode = 'off'
         camera.awb_gains = (1.1, 1.1)
         camera.iso = 200

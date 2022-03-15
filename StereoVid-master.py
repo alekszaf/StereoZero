@@ -27,7 +27,7 @@ while True:
         camera.framerate = 20
         camera.start_recording('/home/pi/Timelapse/video_%s.h264' %tstamp)
         print(f'Recording started @{datetime.now()}')
-        camera.wait_recording(20)
+        camera.wait_recording(300)
         print(f'Recording complete @{datetime.now()}')
         camera.stop_recording()
         camera.close()
