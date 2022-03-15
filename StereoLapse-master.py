@@ -34,6 +34,7 @@ while True:
         camera.awb_mode = 'off'
         camera.awb_gains = (1.1, 1.1)
         camera.iso = 200
+        camera.shutter_speed = 10000
         tstamp = datetime.now()
         print(f'Rising edge @{datetime.now()}')
         camera.capture('/home/pi/Timelapse/left_%s.png' %tstamp)
