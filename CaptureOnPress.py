@@ -5,14 +5,19 @@ from signal import pause
 
 button = Button(6)
 camera = PiCamera()
+camera.resolution = (720, 480)
+camera.awb_mode = 'off'
+camera.awb_gains = (1.1, 1.1)
+camera.iso = 200
+#camera.start_preview(fullscreen=False, window=(100,20,640,480))
 
-def capture():
-        tstamp = datetime.now()
-        print(f'Capturing image @{datetime.now()}')
-        camera.capture('/home/pi/Timelapse/left_%s.png' %tstamp)
+frame = 1
 
-camera.start_preview()
-button.when_pressed = capture
-
-pause()
-    
+while True:
+    try:
+        button.wait_for_press()
+        camera.capture('/home/pi/Timelapse/frame%03d.png' % frame)
+        frame += 1
+    except KeyboardInterrupt:
+        camera.stop_preview()
+        break
