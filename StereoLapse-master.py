@@ -3,7 +3,6 @@
 import RPi.GPIO as GPIO
 from datetime import datetime
 from picamera import PiCamera
-from time import sleep
 
 #Set timer input GPIO
 channel = 5
