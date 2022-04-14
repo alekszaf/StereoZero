@@ -31,8 +31,9 @@ while True:
         camera.resolution = (640, 480)
         camera.awb_mode = 'off'
         camera.awb_gains = (1.1, 1.1)
-        camera.iso = 200
-        camera.shutter_speed = 10000
+        camera.iso = 100
+        camera.shutter_speed = camera.exposure_speed
+        camera.exposure_mode = 'off'
         camera.framerate = 20
         
         #Create the video file and start recording
