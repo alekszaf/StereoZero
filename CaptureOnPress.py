@@ -7,7 +7,7 @@ button = Button(6)
 camera = PiCamera()
 camera.resolution = (720, 480)
 camera.awb_mode = 'off'
-camera.awb_gains = (1.1, 1.1)
+camera.awb_gains = (1.0, 1.0)
 camera.iso = 200
 #camera.start_preview(fullscreen=False, window=(100,20,640,480))
 

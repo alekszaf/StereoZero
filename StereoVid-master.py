@@ -1,4 +1,10 @@
-'''This is the main script for video recording'''
+'''This is the main script for video recording
+
+awb_gains modes
+1.2, 1.3 - indoor daylight
+
+
+'''
 
 import RPi.GPIO as GPIO
 from datetime import datetime
@@ -30,7 +36,7 @@ while True:
         camera = PiCamera()
         camera.resolution = (640, 480)
         camera.awb_mode = 'off'
-        camera.awb_gains = (1.1, 1.1)
+        camera.awb_gains = (1.3, 1.2)
         camera.iso = 100
         camera.shutter_speed = camera.exposure_speed
         camera.exposure_mode = 'off'
@@ -52,3 +58,4 @@ while True:
         
         #Wait till the next capture
         sleep(600)
+        
