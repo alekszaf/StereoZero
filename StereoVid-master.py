@@ -59,3 +59,5 @@ while True:
         #Wait till the next capture
         sleep(600)
         
+    if not video_on:
+        camera.close()
