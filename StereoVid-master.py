@@ -34,7 +34,7 @@ while True:
         
         #Initialize the camera with parameters of choice
         camera = PiCamera()
-        camera.resolution = (640, 480)
+        camera.resolution = (1920, 1080)
         camera.awb_mode = 'off'
         camera.awb_gains = (1.3, 1.2)
         camera.iso = 100
