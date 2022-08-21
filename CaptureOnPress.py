@@ -5,7 +5,7 @@ from signal import pause
 
 button = Button(18)
 camera = PiCamera()
-camera.resolution = (720, 480)
+camera.resolution = (3280, 2464)
 camera.awb_mode = 'off'
 camera.awb_gains = (1.0, 1.0)
 camera.iso = 200
