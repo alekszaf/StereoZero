@@ -3,7 +3,7 @@ from picamera import PiCamera
 from datetime import datetime
 from signal import pause
 
-button = Button(6)
+button = Button(18)
 camera = PiCamera()
 camera.resolution = (720, 480)
 camera.awb_mode = 'off'
