@@ -8,7 +8,7 @@ camera = PiCamera()
 
 #Select resolution mode
 #camera.resolution = (1920, 1080) # mode 1
-camera.resolution = (3280, 2464) #mode 2&3
+#camera.resolution = (3280, 2464) #mode 2&3
 #camera.resolution = (1640, 1232) # mode 4
 #camera.resolution = (1640, 922) # mode 5
 #camera.resolution = (1280, 720) # mode 6
@@ -22,9 +22,29 @@ camera.start_preview(fullscreen=False, window=(100,20,640,480))
 frame = 1
 
 while True:
+#     try:
+#         button.wait_for_press()
+#         camera.capture('/home/pi/Timelapse/frame%03d.png' % frame)
+#         print(frame)
+#         frame += 1
+#     except KeyboardInterrupt:
+#         camera.stop_preview()
+#         break
+
     try:
         button.wait_for_press()
-        camera.capture('/home/pi/Timelapse/frame%03d.png' % frame)
+        camera.resolution = (640, 480)
+        camera.capture('/home/pi/Timelapse/mode7_frame%03d.png' % frame)
+        camera.resolution = (1280, 720)
+        camera.capture('/home/pi/Timelapse/mode6_frame%03d.png' % frame)
+        camera.resolution = (1640, 922)
+        camera.capture('/home/pi/Timelapse/mode5_frame%03d.png' % frame)
+        camera.resolution = (1640, 1232)
+        camera.capture('/home/pi/Timelapse/mode4_frame%03d.png' % frame)
+        camera.resolution = (3280, 2464)
+        camera.capture('/home/pi/Timelapse/mode2_frame%03d.png' % frame)
+        camera.resolution = (1920, 1080)
+        camera.capture('/home/pi/Timelapse/mode1_frame%03d.png' % frame)
         print(frame)
         frame += 1
     except KeyboardInterrupt:
