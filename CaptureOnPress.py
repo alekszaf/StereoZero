@@ -16,10 +16,10 @@ camera = PiCamera()
 
 camera.awb_mode = 'off'
 camera.awb_gains = (1.2, 1.3)
-camera.iso = 200
+camera.iso = 300
 camera.start_preview(fullscreen=False, window=(100,20,640,480))
 
-frame = 1
+frame = 0
 
 while True:
 #     try:
@@ -33,20 +33,23 @@ while True:
 
     try:
         button.wait_for_press()
-        camera.resolution = (640, 480)
-        camera.capture('/home/pi/Timelapse/mode7_frame%03d.png' % frame)
-        camera.resolution = (1280, 720)
-        camera.capture('/home/pi/Timelapse/mode6_frame%03d.png' % frame)
-        camera.resolution = (1640, 922)
-        camera.capture('/home/pi/Timelapse/mode5_frame%03d.png' % frame)
+#         camera.resolution = (640, 480)
+#         camera.capture('/home/pi/Timelapse/100cm/R_mode7_frame%03d.png' % frame)
+#         camera.resolution = (1280, 720)
+#         camera.capture('/home/pi/Timelapse/100cm/R_mode6_frame%03d.png' % frame)
+#         camera.resolution = (1640, 922)
+#         camera.capture('/home/pi/Timelapse/100cm/R_mode5_frame%03d.png' % frame)
         camera.resolution = (1640, 1232)
-        camera.capture('/home/pi/Timelapse/mode4_frame%03d.png' % frame)
+        camera.capture('/home/pi/Timelapse/R_b%01d_d50_m4.png' % frame)
         camera.resolution = (3280, 2464)
-        camera.capture('/home/pi/Timelapse/mode2_frame%03d.png' % frame)
-        camera.resolution = (1920, 1080)
-        camera.capture('/home/pi/Timelapse/mode1_frame%03d.png' % frame)
+        camera.capture('/home/pi/Timelapse/R_b01%d_d50_m2.png' % frame)
+#         camera.resolution = (1920, 1080)
+#         camera.capture('/home/pi/Timelapse/100cm/R_mode1_frame%03d.png' % frame)
         print(frame)
-        frame += 1
+        if frame == 5:
+            frame += 5
+        else:
+            frame += 10
     except KeyboardInterrupt:
         camera.stop_preview()
         break
