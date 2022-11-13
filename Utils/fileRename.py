@@ -9,13 +9,13 @@ for file_name in os.listdir(folder):
     # Construct old file name
     source = folder + file_name
 
-    # Adding the count to the new file name and extension
-    destination = folder + "L_b24_d" + str(count) + "_m2.png"
+    # Adding the count (distance) to the new file name and extension, remember to select the correct camera (R or L)
+    destination = folder + "R_b24_d" + str(count) + "_m2.png"
 
     # Renaming the file
     os.rename(source, destination)
     
-    # Increase the count by 10
+    # Increase the count (distance) by 10
     count += 10
     
 print('All Files Renamed')
