@@ -1,0 +1,19 @@
+import fnmatch
+import os
+from re import search
+
+parent_dir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/"
+
+Ldir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
+Rdir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
+
+d = 40
+
+for i in range(len(os.listdir(Ldir))):
+    folder = "d" + str(d)
+    os.mkdir(os.path.join(parent_dir, folder))
+    if d == 310:
+        break
+    else:
+        d += 10
+
