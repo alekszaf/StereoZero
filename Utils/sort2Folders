@@ -1,19 +1,43 @@
-import fnmatch
 import os
-from re import search
+import shutil
 
-parent_dir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/"
 
-Ldir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
-Rdir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
+parent_dir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-11-08-Branches/Images/"
 
-d = 40
+#Ldir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
+#Rdir = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-06-30-Cactus/Images/L_b24_3280x2464_CACT"
 
-for i in range(len(os.listdir(Ldir))):
-    folder = "d" + str(d)
-    os.mkdir(os.path.join(parent_dir, folder))
-    if d == 310:
-        break
-    else:
-        d += 10
+m2folder = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-11-08-Branches/Images/3280x2464"
+m4folder = "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-11-08-Branches/Images/1640x1232"
 
+d = 10
+
+def create_folders(d, df, parent_dir):
+    for i in range(len(os.listdir(parent_dir))):
+        folder = "d" + str(d)
+        os.mkdir(os.path.join(parent_dir, folder))
+        if d == df:
+            break
+        else:
+            d += 10
+            
+create_folders(60, 120, "C:/Users/b7079552/OneDrive - Newcastle University/PhD/Data/22-11-08-Branches/Images/1640x1232/b10")
+
+#m2folder = "3280x2464"
+#m4folder = "1640x1232"
+
+
+for file in os.listdir(parent_dir):
+    if 'm2' in file:
+    #     if not os.path.exists("3280x2464"):
+    #         m2folder = os.mkdir(os.path.join(parent_dir, m2folder))
+    #         shutil.move(os.path.join(parent_dir, file), m2folder)
+    #     else:
+        shutil.move(os.path.join(parent_dir, file), m2folder)
+    if 'm4' in file:
+        # if not os.path.exists(os.path.join(parent_dir, m4folder)):
+        #     m4folder = os.mkdir(os.path.join(parent_dir, m4folder))
+        #     shutil.move(os.path.join(parent_dir, file), m4folder)
+        # else:
+        shutil.move(os.path.join(parent_dir, file), m4folder)
+        
