@@ -101,9 +101,13 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
     xR, yR, wR, hR = roi_R
     dstL = dstL[yL:yL+hL, xL:xL+wL]
     dstR = dstR[yR:yR+hR, xR:xR+wR]
-    cv2.imshow('undistorted left', dstL)
+    cv2.namedWindow('undistL', cv2.WINDOW_NORMAL)
+    cv2.imshow('undistL', dstL)
+    cv2.resizeWindow('undistL', 820, 616)
     cv2.imshow('distorted left', imgL)
-    cv2.imshow('undistorted right', dstR)
+    cv2.namedWindow('undistR', cv2.WINDOW_NORMAL)
+    cv2.imshow('undistR', dstR)
+    cv2.resizeWindow('undistR', 820, 616)
     cv2.imshow('distorted right', imgR)
     cv2.waitKey(0)
 
