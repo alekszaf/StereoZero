@@ -5,8 +5,8 @@ import glob
 ############## DETECT CHESSBOARD PATTERN ##############
 
 # Calibration image parameters
-chessboardSize = (9, 6)
-frameSize = (720, 480)
+chessboardSize = (6, 8)
+frameSize = (1640, 1232)
 
 # Termination criteria
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
@@ -15,7 +15,7 @@ criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 objp = np.zeros((chessboardSize[0] * chessboardSize[1], 3), np.float32)
 objp[:, :2] = np.mgrid[0:chessboardSize[0], 0:chessboardSize[1]].T.reshape(-1, 2)
 
-objp = objp * 20
+objp = objp * 29
 print(objp)
 
 # Store object points and image points
@@ -24,8 +24,8 @@ imgpointsL = []
 imgpointsR = []
 
 # Load the images
-imagesLeft = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Left_cam_calibration/*.jpg')
-imagesRight = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/CalibrationImages/Right_cam_calibration/*.jpg')
+imagesLeft = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/2022/22-08-31/B5/Mode4/Images/LG/*.png')
+imagesRight = glob.glob('C:/Users/b7079552/OneDrive - Newcastle University/PhD/Camera calibration/2022/22-08-31/B5/Mode4/Images/RG/*.png')
 
 
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
@@ -49,10 +49,14 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
 
         #Draw and display corners
         cv2.drawChessboardCorners(imgL, chessboardSize, cornersL, retL)
-        cv2.imshow('img left', imgL)
+        cv2.namedWindow('imgLwin', cv2.WINDOW_NORMAL)
+        cv2.imshow('imgLwin', imgL)
+        cv2.resizeWindow('imgLwin', 820, 616)
         cv2.drawChessboardCorners(imgR, chessboardSize, cornersR, retR)
-        cv2.imshow('img right', imgR)
-        cv2.waitKey(1000)
+        cv2.namedWindow('imgRwin', cv2.WINDOW_NORMAL)
+        cv2.imshow('imgRwin', imgR)
+        cv2.resizeWindow('imgRwin', 820, 616)
+        cv2.waitKey(0)
 
 cv2.destroyAllWindows()  
 
