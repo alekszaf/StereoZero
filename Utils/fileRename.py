@@ -10,7 +10,6 @@ for file_name in os.listdir(folder):
     source = folder + file_name
 
     # Adding the count (distance) to the new file name and extension, remember to select the correct camera (R or L)
-   # destination = folder + "R_b24_d" + str(count) + "_m2.png"
     destination = f"{folder}R_b24_d{str(i)}_m2.png"
 
     # Renaming the file
