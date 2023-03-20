@@ -3,3 +3,7 @@
 *.mjpeg
 *.tif
 *.h264
+*.ply
+*.txt
+
+tempCodeRunnerFile.py
