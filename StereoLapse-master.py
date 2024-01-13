@@ -1,4 +1,4 @@
-'''This is the main script used to take timelapse imagery'''
+'''This is the main script used to take timelapse imagery/image sequence'''
 
 import RPi.GPIO as GPIO
 from datetime import datetime
