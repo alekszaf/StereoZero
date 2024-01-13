@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Zaforemska
+    given-names: Aleksandra
+title: "StereoZero: Raspberry Pi-based stereo camera system"
+version: 1.0.0
+identifiers:
+  - type: 
+    value: 
+date-released: 2021-08-11
