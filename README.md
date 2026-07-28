@@ -1,4 +1,4 @@
-# RPiStereo (StereoZero)
+# StereoZero
 
 A Raspberry Pi-based stereo camera system for capturing synchronised left/right image sequences, timelapses, and video, plus a Python/OpenCV pipeline for calibrating the camera pair and generating disparity maps and 3D point clouds. Includes 3D-printable enclosures and rig mounts.
 
