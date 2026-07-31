@@ -1,6 +1,6 @@
 # StereoZero
 <p align="center">
-<img width="126" height="255" alt="stereozero" src="https://github.com/user-attachments/assets/1cd6c4e0-0c9f-4e87-9d2b-8b4666582532" />
+<img width="252" height="510" alt="stereozero" src="https://github.com/user-attachments/assets/1cd6c4e0-0c9f-4e87-9d2b-8b4666582532" />
 </p>
 
 A Raspberry Pi-based stereo camera system for capturing synchronised left/right image sequences, timelapses, and video, plus a Python/OpenCV pipeline for calibrating the camera pair and generating disparity maps and 3D point clouds. Includes 3D-printable enclosures and rig mounts.
