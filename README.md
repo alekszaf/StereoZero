@@ -1,6 +1,11 @@
 # StereoZero
 
+<img width="1008" height="2040" alt="stereozero" src="https://github.com/user-attachments/assets/1cd6c4e0-0c9f-4e87-9d2b-8b4666582532" />
+
 A Raspberry Pi-based stereo camera system for capturing synchronised left/right image sequences, timelapses, and video, plus a Python/OpenCV pipeline for calibrating the camera pair and generating disparity maps and 3D point clouds. Includes 3D-printable enclosures and rig mounts.
+
+For an example use of the system, please refer to: 
+Zaforemska, A., Gaulton, R., Mills, J., and Xiao, W. (2023). EVALUATION OF A LOW-COST PHOTOGRAMMETRIC SYSTEM FOR THE RETRIEVAL OF 3D TREE ARCHITECTURE. *The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, XLVIII-1/W2-2023, 1097–1104. https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-1097-2023
 
 ## Repository structure
 
